@@ -1,0 +1,117 @@
+<button class="btn__circle hide-on-init" animateOnScroll animationName="animate__animated animated animate__zoomIn"
+        (click)="scrollToForm()">
+  <span class="btn__circle--bg">
+    <svg-icon name="ic--circle-btn-txt" [size]="130"></svg-icon>
+  </span>
+    <span class="btn__circle--icon">
+    <svg-icon name="control--plus" [size]="21"></svg-icon>
+  </span>
+</button>
+
+<div class="title__row">
+    <div class="title title-color hide-on-init" animateOnScroll
+         animationName="animate__animated animated animate__fadeInUp">
+    <span>
+      Создай <br>
+      <span class="second">{{ pretext }} </span>
+      <span class="last" [ngClass]="{'uppercase' : activeSliderIndex === 0}">
+        {{ activeSliderIndex === 3 ? 'Косметику' : name }}
+      </span>
+    </span>
+    </div>
+    <div class="technologies hide-on-init" animateOnScroll animationName="animate__animated animated animate__zoomIn">
+        <svg-icon name="ic--sprout" [size]="40"></svg-icon>
+        <span>
+      Используем большой опыт и лучшие технологии, чтобы воплотить ваши идеи в жизнь
+    </span>
+    </div>
+</div>
+<div class="create-product hide-on-init" animateOnScroll animationName="animate__animated animated animate__fadeInUp"
+     routerLink="/constructor">
+    <span class="create-product__title">Cоздать продукт</span>
+    <svg-icon name="control--cogwheel"></svg-icon>
+</div>
+<div *ngIf="isBrowser" class="main-slider-wrap">
+    <swiper [config]="sliderConfig" class="swiper-container header_slider" (indexChange)="selectSliderName($event)">
+        <div class="slider__item swiper-slide" *ngFor="let item of sliderImages;">
+            <div class="slider__item--images {{item.class}}">
+                <picture class="image--small">
+                    <!-- 5k -->
+                    <!--          <source media="(min-width: 2560px)" type="image/webp" appStatic-->
+                    <!--                  staticSrcset="/assets/npobit/header-slider/fullhd/{{item.smallImg}}@2x.webp, /assets/npobit/header-slider/fullhd/{{item.smallImg}}@3x.webp 2x">-->
+                    <!--          <source media="(min-width: 2560px)" type="image/png" appStatic-->
+                    <!--                  staticSrcset="/assets/npobit/header-slider/fullhd/{{item.smallImg}}@2x.png">-->
+                    <!-- Full HD -->
+                    <source media="(min-width: 1920px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/fullhd/{{item.smallImg}}.webp, /assets/npobit/header-slider/fullhd/{{item.smallImg}}@2x.webp 2x">
+                    <source media="(min-width: 1920px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/fullhd/{{item.smallImg}}.png, /assets/npobit/header-slider/fullhd/{{item.smallImg}}@2x.png 2x">
+                    <!-- Desktop -->
+                    <source media="(min-width: 1366px) and (max-width: 1919px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/1366/{{item.smallImg}}.webp, /assets/npobit/header-slider/1366/{{item.smallImg}}@2x.webp 2x">
+                    <source media="(min-width: 1366px) and (max-width: 1919px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/1366/{{item.smallImg}}.png, /assets/npobit/header-slider/1366/{{item.smallImg}}@2x.png 2x">
+                    <!-- Tablets  -->
+                    <source media="(min-width: 992px) and (max-width: 1365px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/992/{{item.smallImg}}.webp, /assets/npobit/header-slider/992/{{item.smallImg}}@2x.webp 2x">
+                    <source media="(min-width: 992px) and (max-width: 1365px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/992/{{item.smallImg}}.png, /assets/npobit/header-slider/992/{{item.smallImg}}@2x.png 2x">
+
+                    <source media="(min-width: 768px) and (max-width: 991px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/768/{{item.smallImg}}.webp, /assets/npobit/header-slider/768/{{item.smallImg}}@2x.webp 2x">
+                    <source media="(min-width: 768px) and (max-width: 991px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/768/{{item.smallImg}}.png, /assets/npobit/header-slider/768/{{item.smallImg}}@2x.png 2x">
+                    <!-- Mobile -->
+                    <source media="(max-width: 767px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/mobile/{{item.smallImg}}.webp, /assets/npobit/header-slider/mobile/{{item.smallImg}}@2x.webp 2x">
+                    <source media="(max-width: 767px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/mobile/{{item.smallImg}}.png, /assets/npobit/header-slider/mobile/{{item.smallImg}}@2x.png 2x">
+                    <img class="swiper-lazy"
+                         [lazyLoad]="'/assets/npobit/header-slider/mobile/{{item.smallImg}}.webp' | static"
+                         alt="{{item.name}}">
+                </picture>
+                <picture class="image--big">
+                    <!-- 5k -->
+                    <!--          <source media="(min-width: 2560px)" type="image/webp" appStatic-->
+                    <!--                  staticSrcset="/assets/npobit/header-slider/fullhd/{{item.bigImg}}@2x.webp, /assets/npobit/header-slider/fullhd/{{item.bigImg}}@3x.webp 2x">-->
+                    <!--          <source media="(min-width: 2560px)" type="image/png" appStatic-->
+                    <!--                  staticSrcset="/assets/npobit/header-slider/fullhd/{{item.bigImg}}@2x.png">-->
+                    <!-- Full HD -->
+                    <source media="(min-width: 1920px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/fullhd/{{item.bigImg}}.webp, /assets/npobit/header-slider/fullhd/{{item.bigImg}}@2x.webp 2x">
+                    <source media="(min-width: 1920px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/fullhd/{{item.bigImg}}.png, /assets/npobit/header-slider/fullhd/{{item.bigImg}}@2x.png 2x">
+                    <!-- Desktop -->
+                    <source media="(min-width: 1366px) and (max-width: 1919px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/1366/{{item.bigImg}}.webp, /assets/npobit/header-slider/1366/{{item.bigImg}}@2x.webp 2x">
+                    <source media="(min-width: 1366px) and (max-width: 1919px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/1366/{{item.bigImg}}.png, /assets/npobit/header-slider/1366/{{item.bigImg}}@2x.png 2x">
+                    <!-- Tablets  -->
+                    <source media="(min-width: 992px) and (max-width: 1365px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/992/{{item.bigImg}}.webp, /assets/npobit/header-slider/992/{{item.bigImg}}@2x.webp 2x">
+                    <source media="(min-width: 992px) and (max-width: 1365px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/992/{{item.bigImg}}.png, /assets/npobit/header-slider/992/{{item.bigImg}}@2x.png 2x">
+
+                    <source media="(min-width: 768px) and (max-width: 991px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/768/{{item.bigImg}}.webp, /assets/npobit/header-slider/768/{{item.bigImg}}@2x.webp 2x">
+                    <source media="(min-width: 768px) and (max-width: 991px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/768/{{item.bigImg}}.png, /assets/npobit/header-slider/768/{{item.bigImg}}@2x.png 2x">
+                    <!-- Mobile -->
+                    <source media="(max-width: 767px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/header-slider/mobile/{{item.bigImg}}.webp, /assets/npobit/header-slider/mobile/{{item.bigImg}}@2x.webp 2x">
+                    <source media="(max-width: 767px)" type="image/png" appStatic
+                            staticSrcset="/assets/npobit/header-slider/mobile/{{item.bigImg}}.png, /assets/npobit/header-slider/mobile/{{item.bigImg}}@2x.png 2x">
+                    <img class="swiper-lazy"
+                         [lazyLoad]="'/assets/npobit/header-slider/mobile/{{item.bigImg}}.webp' | static"
+                         alt="{{item.name}}">
+                </picture>
+            </div>
+        </div>
+    </swiper>
+    <div class="main-slider-nav">
+        <div class="main-slider-nav__item steps-prev"></div>
+        <div class="main-slider-nav__item steps-next"></div>
+    </div>
+    <div class="bullets center__sliders--bullets steps steps-bullets"></div>
+</div>
+

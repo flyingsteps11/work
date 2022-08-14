@@ -1,0 +1,191 @@
+<!-- Mobile Screen -->
+<ng-container *ngIf="screenwidth <= 1279">
+    <swiper [config]="swiper" class="center__sliders">
+        <div class="center__sliders--item video" id="videoMobile">
+            <div class="center__sliders--info center">
+                <span>Современные технологии и большой опыт для воплощения любых ваших идей</span>
+                <button class="open-video" (click)="startVideo()">
+                    <svg-icon name="control--play" [size]="32"></svg-icon>
+                    <span>Смотреть видео</span>
+                </button>
+            </div>
+            <div class="video__block">
+                <video class="video__content" #videoPlayerMobile
+                       autoplay loop muted playsinline [muted]="true"
+                       [poster]="'/assets/npobit/center-slider/fullhd/slide1@2x.webp'| static">
+                    <source [src]="'/assets/npobit/video/tone1200x676.mp4'| static" type="video/mp4">
+                    <source [src]="'/assets/npobit/video/tone1200x676.webm'| static" type="video/webm">
+                </video>
+                <!--        <img class="video__content image" [class.hide-bg-image]="!isVideoActive" appStatic="/assets/npobit/center-slider/tablet/slide1%402x.webp">-->
+                <!--        <button class="video__close" *ngIf="isVideoActive" (click)="closeVideo()">-->
+                <!--          <svg-icon [size]="40" name="modal-constructor&#45;&#45;close"></svg-icon>-->
+                <!--        </button>-->
+                <!--        <video *ngIf="isVideoActive" class="video__content iframe" #videoPlayerMobileFull autoplay loop [muted]="!isVideoActive" [controls]="isVideoActive">-->
+                <!--          <source [src]="'/assets/npobit/center-slider/video/' + videoBg +'.mp4'|static" type="video/mp4">-->
+                <!--        </video>-->
+            </div>
+        </div>
+
+        <div class="center__sliders--item" *ngFor="let item of sliderImages">
+            <ng-container *ngIf="!item.button">
+                <div class="center__sliders--info">
+                    <span class="big" [ngClass]="{'large': item.title_large}" [innerHTML]="item.title"></span>
+                    <span class="{{item.classDef}}">{{ item.text }}</span>
+                </div>
+                <picture>
+                    <!-- Tablets  -->
+                    <source media="(min-width: 577px) and (max-width: 1280px)" type="image/webp"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/tablet/{{item.src}}.webp, /assets/npobit/center-slider/tablet/{{item.src}}@2x.webp 2x">
+                    <source media="(min-width: 577px) and (max-width: 1280px)" type="image/jpg"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/tablet/{{item.src}}.jpg, /assets/npobit/center-slider/tablet/{{item.src}}@2x.jpg 2x">
+                    <!-- Mobile -->
+                    <source media="(max-width: 576px)" type="image/webp"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/mobile/{{item.src}}.webp, /assets/npobit/center-slider/mobile/{{item.src}}@2x.webp 2x">
+                    <source media="(max-width: 576px)" type="image/jpg"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/mobile/{{item.src}}.jpg, /assets/npobit/center-slider/mobile/{{item.src}}@2x.jpg 2x">
+                    <img (load)="imagesComplited()" appStatic="/assets/npobit/center-slider/mobile/{{item.src}}.webp"
+                         alt="">
+                </picture>
+            </ng-container>
+            <ng-container *ngIf="item.button">
+                <div class="center__sliders--info">
+                    <span class="big" [ngClass]="{'large': item.title_large}" [innerHTML]="item.title"></span>
+                    <div class="center__sliders--wrap">
+                        <span class="{{item.classDef}}">{{ item.text }}</span>
+                        <button class="open-carousel" (click)="openCarouselModal()">
+                            <svg-icon name="control--play" [size]="32"></svg-icon>
+                            <span>Посмотреть фото производства</span>
+                        </button>
+                    </div>
+                </div>
+                <picture>
+                    <!-- Tablets  -->
+                    <source media="(min-width: 577px) and (max-width: 1280px)" type="image/webp"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/tablet/{{item.src}}.webp, /assets/npobit/center-slider/tablet/{{item.src}}@2x.webp 2x">
+                    <source media="(min-width: 577px) and (max-width: 1280px)" type="image/jpg"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/tablet/{{item.src}}.jpg, /assets/npobit/center-slider/tablet/{{item.src}}@2x.jpg 2x">
+                    <!-- Mobile -->
+                    <source media="(max-width: 576px)" type="image/webp"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/mobile/{{item.src}}.webp, /assets/npobit/center-slider/mobile/{{item.src}}@2x.webp 2x">
+                    <source media="(max-width: 576px)" type="image/jpg"
+                            appStatic
+                            staticSrcset="/assets/npobit/center-slider/mobile/{{item.src}}.jpg, /assets/npobit/center-slider/mobile/{{item.src}}@2x.jpg 2x">
+                    <img (load)="imagesComplited()" appStatic="/assets/npobit/center-slider/mobile/{{item.src}}.webp"
+                         alt="">
+                </picture>
+            </ng-container>
+        </div>
+    </swiper>
+    <div class="bullets center__sliders--bullets video-bullets"></div>
+</ng-container>
+
+<!-- Desktop Screen -->
+<ng-container *ngIf="screenwidth > 1279">
+
+    <div class="center__sliders" #horizontalScrollBlock>
+        <div class="center__sliders--item" #section>
+            <div class="center__sliders--info center">
+        <span *ngIf="!isVideoActive">
+          Современные технологии и большой опыт для воплощения любых ваших идей
+        </span>
+                <button class="open-video" *ngIf="!isVideoActive" (click)="startVideo()">
+                    <svg-icon name="control--play" [size]="32"></svg-icon>
+                    <span>Смотреть видео</span>
+                </button>
+            </div>
+            <div class="video__block">
+                <video class="video__content" #videoPlayer
+                       loading="lazy" autoplay loop muted [muted]="!isVideoActive" [controls]="isVideoActive"
+                       [poster]="'/assets/npobit/center-slider/fullhd/slide1@2x.webp'| static">
+                    <source [src]="'/assets/npobit/video/tone1200x676.mp4'| static" type="video/mp4">
+                    <source [src]="'/assets/npobit/video/tone1200x676.webm'| static" type="video/webm">
+                </video>
+                <button class="video__close" *ngIf="isVideoActive" (click)="closeVideo()">
+                    <svg-icon [size]="40" name="modal-constructor--close"></svg-icon>
+                </button>
+                <iframe class="video__content iframe" *ngIf="isVideoActive" #videoModal id="videoMobileDesc"
+                        [src]="'https://www.youtube.com/embed/h4FAzYsFhLs?autoplay=1&controls=0&showinfo=0' | vrSafe : 'resourceUrl'"
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+
+        <div class="center__sliders--item" *ngFor="let item of sliderImages" #section>
+            <ng-container *ngIf="!item.button">
+                <div class="center__sliders--info">
+                    <span class="big" [ngClass]="{'large': item.title_large}" [innerHTML]="item.title"></span>
+                    <span class="{{item.classDef}}">{{ item.text }}</span>
+                </div>
+                <picture>
+                    <!-- 5k -->
+                    <source media="(min-width: 2560px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}@2x.webp, /assets/npobit/center-slider/fullhd/{{item.src}}@3x.webp 2x">
+                    <source media="(min-width: 2560px)" type="image/jpg" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}@2x.jpg">
+
+                    <!-- Full HD -->
+                    <source media="(min-width: 1281px) and (max-width: 2559px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}.webp, /assets/npobit/center-slider/fullhd/{{item.src}}@2x.webp 2x">
+                    <source media="(min-width: 1281px) and (max-width: 2559px)" type="image/jpg" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}.jpg, /assets/npobit/center-slider/fullhd/{{item.src}}@2x.jpg 2x">
+
+                    <!-- Desktop -->
+                    <source media="(max-width: 1280px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/center-slider/desktop/{{item.src}}.webp, /assets/npobit/center-slider/desktop/{{item.src}}@2x.webp 2x">
+                    <source media="(max-width: 1280px)" type="image/jpg" appStatic
+                            staticSrcset="/assets/npobit/center-slider/desktop/{{item.src}}.jpg, /assets/npobit/center-slider/desktop/{{item.src}}@2x.jpg 2x">
+
+                    <img (load)="imagesComplited()" appStatic="/assets/npobit/center-slider/desktop/{{item.src}}.webp"
+                         alt="">
+                </picture>
+            </ng-container>
+            <ng-container *ngIf="item.button">
+                <div class="center__sliders--info">
+                    <span class="big" [ngClass]="{'large': item.title_large}" [innerHTML]="item.title"></span>
+                    <div class="center__sliders--wrap">
+                        <span class="{{item.classDef}}">{{ item.text }}</span>
+                        <button class="open-carousel" (click)="openCarouselModal()">
+                            <svg-icon name="control--play" [size]="32"></svg-icon>
+                            <span>Посмотреть фото производства</span>
+                        </button>
+                    </div>
+                </div>
+                <picture>
+                    <!-- 5k -->
+                    <source media="(min-width: 2560px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}@2x.webp, /assets/npobit/center-slider/fullhd/{{item.src}}@3x.webp 2x">
+                    <source media="(min-width: 2560px)" type="image/jpg" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}@2x.jpg">
+
+                    <!-- Full HD -->
+                    <source media="(min-width: 1281px) and (max-width: 2559px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}.webp, /assets/npobit/center-slider/fullhd/{{item.src}}@2x.webp 2x">
+                    <source media="(min-width: 1281px) and (max-width: 2559px)" type="image/jpg" appStatic
+                            staticSrcset="/assets/npobit/center-slider/fullhd/{{item.src}}.jpg, /assets/npobit/center-slider/fullhd/{{item.src}}@2x.jpg 2x">
+
+                    <!-- Desktop -->
+                    <source media="(max-width: 1280px)" type="image/webp" appStatic
+                            staticSrcset="/assets/npobit/center-slider/desktop/{{item.src}}.webp, /assets/npobit/center-slider/desktop/{{item.src}}@2x.webp 2x">
+                    <source media="(max-width: 1280px)" type="image/jpg" appStatic
+                            staticSrcset="/assets/npobit/center-slider/desktop/{{item.src}}.jpg, /assets/npobit/center-slider/desktop/{{item.src}}@2x.jpg 2x">
+
+                    <img (load)="imagesComplited()" appStatic="/assets/npobit/center-slider/desktop/{{item.src}}.webp"
+                         alt="">
+                </picture>
+            </ng-container>
+        </div>
+    </div>
+
+
+</ng-container>
+
+

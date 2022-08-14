@@ -1,0 +1,32 @@
+@import "../../../../../styles/for-coponents";
+
+:host {
+  position: relative;
+  @include flex(flex-end, center);
+  flex-direction: column;
+  height: 100%;
+}
+
+.modal-close {
+  position: relative;
+  top: 0;
+  right: 0;
+  margin-bottom: 7px;
+}
+
+.mat-dialog-content {
+  margin: 0;
+}
+
+.video__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .iframe {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+
+}

@@ -1,0 +1,831 @@
+@import "../../styles/mixins";
+@import "../../styles/colors";
+
+:host {
+  display: block;
+  position: relative;
+  margin-top: -80px;
+  padding-top: 80px;
+  background: url('https://static.vertera.org/assets/npobit/header_bg-small.png') #F1F7FE no-repeat top right;
+  background-size: contain;
+  z-index: 1;
+  overflow: hidden;
+  background-attachment: fixed;
+  @include media("min", "lg") {
+    background: url('https://static.vertera.org/assets/npobit/main_bg.png') #F1F7FE no-repeat top right;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  @include media("min", "xl") {
+    margin-top: -104px;
+    padding-top: 104px;
+  }
+}
+
+.main {
+  &--text {
+    &.blue {
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: $main-blue;
+      margin-top: 57px;
+      --animate-duration: 1s;
+      --animate-delay: 1s;
+      @include media("min", "md") {
+        margin-top: 287px;
+        @include font(20px, 32px);
+      }
+      @include media("min", "lg") {
+        @include font(20px, 32px);
+        margin-top: 204px;
+      }
+      @media screen and (min-width: 1366px) {
+        @include font(24px, 36px);
+        margin: 188px 0px 1px;
+      }
+      @include media("min", "xxl") {
+        @include font(28px, 40px);
+        margin: 247px 0px 0px;
+        padding: 0 24px;
+      }
+    }
+
+    &.big {
+      @include font(24px, 32px);
+      margin-top: 29px;
+      padding-top: 26px;
+      position: relative;
+      --animate-duration: 1.5s;
+      --animate-delay: 1s;
+      @include media("min", "md") {
+        @include font(32px, 48px);
+        padding-top: 34px;
+      }
+      @include media("min", "lg") {
+        @include font(40px, 56px);
+        padding-top: 35px;
+      }
+      @media screen and (min-width: 1366px) {
+        @include font(48px, 64px);
+        padding: 34px 50px 0;
+      }
+      @include media("min", "xxl") {
+        @include font(56px, 80px);
+        margin-top: 45px;
+        padding: 34px 32px 0;
+      }
+
+      &::before {
+        position: absolute;
+        content: '';
+        height: 2px;
+        border-radius: 2px;
+        width: 120px;
+        top: 0;
+        right: calc(50% - 60px);
+        background-color: $main-blue-gray-color;
+        @include media("min", "md") {
+          width: 224px;
+          right: calc(50% - 112px);
+        }
+        @include media("min", "xxl") {
+          width: 224px;
+          right: calc(50% - 112px);
+        }
+      }
+    }
+
+    p {
+      @include font(inherit, inherit);
+      color: inherit;
+      text-align: center;
+    }
+  }
+}
+
+.first {
+  @include media("min", "md") {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+  }
+
+  app-main-slider {
+    order: 1;
+    width: 100%;
+  }
+
+  .main--text {
+    &.blue {
+      order: 2;
+    }
+
+    &.big {
+      order: 3;
+    }
+  }
+
+  ::ng-deep {
+    .btn-send {
+      border-radius: 100px;
+      height: 64px !important;
+      @include font(20px, 28px);
+    }
+
+    .btn-create-product {
+      background: $main-white;
+      @include media("min", "md") {
+        border-radius: 100px;
+        height: 64px !important;
+        @include font(20px, 28px);
+      }
+    }
+  }
+
+  .app-submit-request {
+    order: 4;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 328px;
+    @include media("min", "md") {
+      margin-top: 241px;
+      margin-left: auto;
+      margin-right: auto;
+      grid-template-columns: repeat(auto-fit, 248px);
+      justify-content: center;
+      grid-column-gap: 20px;
+      column-gap: 20px;
+      max-width: 648px;
+    }
+    @include media("min", "lg") {
+      margin-top: 134px;
+      grid-template-columns: repeat(auto-fit, 312px);
+    }
+    @media screen and (min-width: 1366px) {
+      margin-top: 96px;
+      height: 64px;
+    }
+    @include media("min", "xxl") {
+      margin-top: 206px;
+    }
+  }
+
+}
+
+.possibly {
+  margin-top: 80px;
+  @include media("min", "md") {
+    margin-top: 105px;
+  }
+  @include media("min", "lg") {
+    margin-top: 103px;
+  }
+  @media screen and (min-width: 1366px) {
+    margin-top: 112px;
+  }
+  @include media("min", "full") {
+    margin-top: 180px;
+  }
+
+  &.container {
+    @include media("min", "xl") {
+      overflow-x: initial;
+    }
+  }
+
+  .title {
+    @include media("min", "md") {
+      @include font(72px, 80px);
+    }
+    @include media("min", "lg") {
+      @include font(80px, 88px);
+    }
+    @media screen and (min-width: 1366px) {
+      @include font(88px, 96px);
+    }
+    @include media("min", "xxl") {
+      padding-left: 0;
+    }
+    @include media("min", "full") {
+      @include font(104px, 112px);
+    }
+  }
+
+  &__list {
+    margin-top: 32px;
+    margin-left: -8px;
+    margin-right: -8px;
+    position: relative;
+    @include media("min", "md") {
+      margin-top: 40px;
+      margin-left: -16px;
+      margin-right: -16px;
+    }
+    @include media("min", "lg") {
+      margin-left: -31px;
+      margin-right: -31px;
+      margin-top: 32px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-top: 56px;
+      margin-left: -61px;
+      margin-right: -61px;
+    }
+
+    @include media("min", "xxl") {
+      margin-top: 85px;
+      margin-left: -56px;
+      margin-right: -56px;
+    }
+
+    li {
+      padding: 25px 26px 24px 16px;
+      border-radius: 0;
+      background: transparent;
+      transition: all .2s linear;
+      position: relative;
+      @include media("min", "md") {
+        padding: 24px 16px;
+      }
+      @include media("min", "lg") {
+        padding: 32px 33px 40px 32px;
+      }
+      @media screen and (min-width: 1366px) {
+        padding: 56px 40px 65px 56px;
+      }
+      @include media("min", "xxl") {
+        padding: 66px 26px 72px 56px;
+        margin-top: 0;
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 16px;
+        right: 16px;
+        height: 2px;
+        background: $main-blue-gray-color;
+        transition: all .18s linear;
+        @include media("min", "lg") {
+          left: 32px;
+          right: 32px;
+        }
+        @media screen and (min-width: 1366px) {
+          left: 54px;
+          right: 54px;
+        }
+      }
+
+      &:hover {
+        background: $main-blue;
+        border-radius: 16px;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all .25s linear;
+        @include media("min", "lg") {
+          padding: 32px 33px 31px 32px;
+          border-radius: 24px;
+        }
+        @media screen and (min-width: 1366px) {
+          padding: 56px 40px 56px 56px;
+        }
+        @include media("min", "xxl") {
+          padding: 66px 26px 63px 56px;
+          z-index: 2;
+        }
+
+        &:before {
+          background: $main-blue;
+        }
+
+        & + li {
+          @include media("min", "xxl") {
+            margin-top: -25px;
+          }
+
+          &:before {
+            background: transparent;
+          }
+        }
+
+        span {
+          &:nth-child(2) {
+            @include media("min", "lg") {
+              transform: scale(1, 1);
+              opacity: 1;
+              position: relative;
+            }
+          }
+        }
+      }
+
+      &.long {
+        padding: 25px 16px 24px;
+        @include media("min", "lg") {
+          padding: 36px 32px 42px;
+        }
+        @media screen and (min-width: 1366px) {
+          padding: 58px 26px 65px 56px;
+        }
+        @include media("min", "xxl") {
+          padding: 66px 26px 72px 56px;
+        }
+
+      }
+
+      span {
+        width: 100%;
+        display: inline-block;
+
+        &:nth-child(1) {
+          @include font(24px, 32px);
+          @include media("min", "md") {
+            @include font(32px, 48px);
+          }
+          @include media("min", "lg") {
+            @include font(40px, 56px);
+          }
+          @media screen and (min-width: 1366px) {
+            @include font(48px, 64px);
+          }
+          @include media("min", "xxl") {
+            @include font(56px, 80px);
+          }
+        }
+
+        &:nth-child(2) {
+          margin-top: 9px;
+          @include media("min", "md") {
+            @include font(20px, 28px);
+          }
+          @include media("min", "lg") {
+            transform: scale(1, 0);
+            transform-origin: 0 0;
+            left: 0;
+            top: 0;
+            position: absolute;
+            transition: opacity .5s linear;
+            opacity: 0;
+            @include font(20px, 28px);
+          }
+          @media screen and (min-width: 1366px) {
+            margin-top: 24px;
+          }
+
+          span {
+            text-decoration: underline;
+            @include font(16px, 24px);
+            display: inline;
+            @include media("min", "xxl") {
+              @include font(20px, 28px);
+            }
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      &:last-of-type {
+        &:after {
+          position: absolute;
+          content: '';
+          bottom: 0;
+          left: 16px;
+          right: 16px;
+          height: 2px;
+          transition: all .18s linear;
+          background: $main-blue-gray-color;
+          @media screen and (min-width: 1366px) {
+            left: 54px;
+            right: 54px;
+          }
+        }
+
+        &:hover {
+          &:after {
+            background: $main-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.trust {
+  --animate-duration: 1.5s;
+  --animate-delay: 1s;
+
+  .title {
+    text-align: center;
+    @include media("min", "md") {
+      text-align: left;
+      @include font(72px, 80px);
+    }
+    @include media("min", "lg") {
+      text-align: left;
+      @include font(80px, 88px);
+    }
+    @media screen and (min-width: 1366px) {
+      @include font(88px, 96px);
+    }
+    @include media("min", "xxl") {
+      padding-left: 0;
+    }
+    @include media("min", "full") {
+      @include font(104px, 112px);
+    }
+  }
+
+  &__logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 156px);
+    justify-content: space-between;
+    row-gap: 16px;
+    margin-top: 32px;
+    @include media("min", "md") {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 28px;
+      grid-column-gap: 20px;
+    }
+    @include media("min", "lg") {
+      align-content: stretch;
+      justify-content: flex-start;
+      justify-items: flex-start;
+      column-gap: 24px;
+      row-gap: 16px;
+      margin-top: 32px;
+    }
+    @include media("min", "xl") {
+      justify-content: stretch;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 24px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-top: 66px;
+    }
+    @include media("min", "xxl") {
+      margin: 88px 0 71px;
+      row-gap: 56px;
+    }
+
+    &--link {
+      @include flex(center, center);
+      height: 126px;
+      @include media("min", "md") {
+        height: 202px;
+        @include flex(center, flex-start);
+      }
+      @include media("min", "lg") {
+        height: 202px;
+      }
+      @include media("min", "xl") {
+        @include flex(center, flex-start);
+      }
+    }
+
+    &--img {
+      @include media("min", "xl") {
+        max-height: 100%;
+      }
+
+      img {
+        height: auto;
+      }
+    }
+
+    &--img1 {
+      width: 86px;
+      @include media("min", "md") {
+        width: 126px;
+      }
+      @include media("min", "lg") {
+        width: 150px;
+      }
+    }
+
+    &--img2 {
+      width: 92px;
+      @include media("min", "md") {
+        width: 147px;
+        margin-top: 8px;
+      }
+      @include media("min", "lg") {
+        width: 177px;
+      }
+    }
+
+    &--img3 {
+      width: 96px;
+      @include media("min", "md") {
+        width: 144px;
+        margin-top: 40px;
+      }
+      @include media("min", "lg") {
+        width: 194px;
+        margin-top: 36px;
+      }
+    }
+
+    &--img4 {
+      width: 88px;
+      @include media("min", "md") {
+        width: 121px;
+        margin-top: -6px;
+        margin-left: 1px;
+      }
+      @include media("min", "lg") {
+        width: 152px;
+        margin-top: 0;
+      }
+      @include media("min", "full") {
+        margin-top: 6px;
+      }
+    }
+
+    &--img5 {
+      width: 101px;
+      @include media("min", "md") {
+        width: 147px;
+        margin-top: -13px;
+        margin-left: 2px;
+      }
+      @include media("min", "lg") {
+        width: 172px;
+      }
+      @include media("min", "full") {
+        margin-top: -6px;
+      }
+    }
+
+    &--img6 {
+      width: 116px;
+      margin-top: 8px;
+      margin-right: 14px;
+      @include media("min", "md") {
+        width: 147px;
+      }
+      @include media("min", "lg") {
+        width: 203px;
+      }
+      @include media("min", "full") {
+        margin-top: 18px;
+      }
+    }
+
+    &--img7 {
+      width: 90px;
+      @include media("min", "md") {
+        width: 118px;
+        margin-top: -47px;
+        margin-left: 5px;
+      }
+      @include media("min", "lg") {
+        width: 147px;
+        margin-top: -10px;
+        margin-left: 3px;
+      }
+      @include media("min", "full") {
+        margin-top: -6px;
+      }
+    }
+
+    &--img8 {
+      width: 106px;
+      margin-top: 10px;
+      margin-right: 15px;
+      @include media("min", "md") {
+        width: 147px;
+        margin-top: -49px;
+      }
+      @include media("min", "lg") {
+        width: 177px;
+        margin-top: -2px;
+      }
+      @include media("min", "full") {
+        margin-top: 2px;
+      }
+    }
+
+    &--img9 {
+      width: 118px;
+      @include media("min", "md") {
+        width: 155px;
+        margin-top: -50px;
+      }
+      @include media("min", "lg") {
+        width: 191px;
+        margin-top: -5px;
+      }
+      @include media("min", "full") {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.container {
+  overflow-x: hidden; // Fix for sliders !important
+  @include media("min", "md") {
+    padding: 0 24px;
+  }
+  @include media("min", "lg") {
+    padding: 0 40px;
+  }
+  @include media("min", "xl") {
+    padding: 0;
+    max-width: 1128px;
+  }
+  @include media("min", "full") {
+    max-width: 1320px;
+  }
+
+  @include media("min", "xxl") {
+    overflow-x: visible;
+  }
+}
+
+app-scroll-to-top {
+  opacity: 1;
+  transition: all .25s ease;
+
+  .btn-create, .btn-application {
+    transition: all .25s ease;
+  }
+
+  &::ng-deep {
+    .action-btns__wrapper {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &.change {
+    &::ng-deep {
+      .btn-create {
+        border: 2px solid #ffffff;
+        background: transparent;
+
+        svg-icon {
+          --icon-color: #ffffff;
+        }
+
+        label {
+          color: #ffffff;
+        }
+      }
+
+      .btn-application {
+        background: #ffffff;
+        border: 2px solid #ffffff;
+        color: #242424;
+      }
+    }
+  }
+
+  &.visible {
+    &::ng-deep {
+      .action-btns__wrapper {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &.hide-play-video {
+    &::ng-deep {
+      .action-btns__wrapper {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+}
+
+.advantages {
+  margin-top: 41px;
+  @include media("min", "md") {
+    margin-top: 58px;
+  }
+  @include media("min", "lg") {
+    margin-top: 56px;
+  }
+  @media screen and (min-width: 1366px) {
+    margin-top: 112px;
+  }
+  @include media("min", "full") {
+    margin-top: 179px;
+  }
+
+  .title {
+    font-weight: 700;
+    @include media("min", "md") {
+      @include font(72px, 80px);
+    }
+    @include media("min", "lg") {
+      @include font(80px, 88px);
+    }
+    @media screen and (min-width: 1366px) {
+      @include font(88px, 96px);
+    }
+    @include media("min", "full") {
+      @include font(104px, 112px);
+    }
+  }
+
+  &__list {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 16px;
+    @include media("min", "sm") {
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 16px;
+    }
+    @include media("min", "md") {
+      margin-top: 40px;
+      grid-column-gap: 24px;
+      grid-row-gap: 24px;
+    }
+    @include media("min", "lg") {
+      margin-top: 56px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include media("min", "full") {
+      margin-top: 104px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 24px;
+    height: 300px;
+    width: 100%;
+    padding: 24px 24px 32px;
+    @include media("min", "sm") {
+      height: 340px;
+    }
+    @include media("min", "md") {
+      padding: 32px 24px;
+    }
+    @include media("min", "full") {
+      height: 432px;
+      padding: 32px 24px 40px;
+    }
+  }
+
+  &__title {
+    @include font(20px, 28px);
+    text-align: center;
+    margin: 16px 0;
+    @include media("min", "full") {
+      margin-top: 16px;
+      margin-bottom: 24px;
+      @include font(28px, 44px);
+    }
+  }
+
+  &__text {
+    @include font(16px, 24px);
+    opacity: 0.6;
+    text-align: center;
+    @include media("min", "full") {
+      @include font(20px, 28px);
+    }
+  }
+
+  &__number {
+    margin-top: auto;
+    font-weight: 700;
+    @include font(20px, 28px);
+    text-align: center;
+    color: $main-blue;
+  }
+}
+
+.main-question_form {
+  &::ng-deep {
+    .questions {
+      margin-top: 80px;
+      @include media("min", "md") {
+        margin-top: 76px;
+      }
+      @include media("min", "lg") {
+        margin-top: 103px;
+      }
+      @include media("min", "xl") {
+        margin-top: 127px;
+      }
+      @include media("min", "xxl") {
+        margin-top: 160px;
+      }
+    }
+  }
+}

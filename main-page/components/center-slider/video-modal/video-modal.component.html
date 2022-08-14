@@ -1,0 +1,8 @@
+<button class="modal-close" mat-dialog-close>
+    <svg-icon [size]="40" name="modal-constructor--close"></svg-icon>
+</button>
+<video class="video__content iframe" autoplay loop controls #videoModal (click)="playPause()">
+    <source [src]="'/assets/npobit/center-slider/video/' + videoBg +'.mp4'|static" type="video/mp4">
+</video>
+
+

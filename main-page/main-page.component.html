@@ -1,0 +1,156 @@
+<app-preloader (finishAnimation)='finishAnimation($event)' *ngIf="!isLoadingEnd && animationCall"></app-preloader>
+<div class="container first">
+
+    <app-main-slider (finishLoadImages)='loadImagesMainSlider($event)'></app-main-slider>
+
+
+    <div class="main--text blue hide-on-init" animateOnScroll
+         animationName="animate__animated animated animate__fadeIn">
+        <p>
+            Контрактное производство НПО «БИТ» сертифицировано по ISO 22000:2018, соответствует требованиям и стандартам
+            Halal, Kosher, Vegan.
+        </p>
+    </div>
+    <div class="main--text big hide-on-init"
+         animateOnScroll animationName="animate__animated animated animate__fadeIn">
+        <p>
+            Специализируемся и производим диетическое лечебное, диетическое профилактическое, специализированное,
+            спортивное и
+            детское питание, биологически активные добавки, напитки, косметические средства под торговой маркой
+            заказчиков с
+            2005 года.
+        </p>
+    </div>
+    <div class="app-submit-request" #sumbitOnMainPage>
+        <app-submit-request *ngIf="!displayBtn"></app-submit-request>
+    </div>
+</div>
+
+<div #centerSlider id="centerSlider">
+    <app-center-slider (finishLoadImages)='loadImagesCenterSlider($event)'
+                       (playVideo)='hideSumbitbuttons($event)'></app-center-slider>
+</div>
+
+<div class="container advantages">
+    <div class="title">
+        <span>Ваши<br/> преимущества</span>
+    </div>
+    <div class="advantages__list">
+        <div class="advantages__item" *ngFor="let item of advantagesList">
+            <svg-icon class="advantages__icon" [size]="72" name="advantage--{{item.icon}}"></svg-icon>
+            <p class="advantages__title" [innerHtml]="item.title"></p>
+            <p class="advantages__text" [innerHtml]="item.text"></p>
+            <span class="advantages__number" [innerHtml]="item.number"></span>
+        </div>
+    </div>
+</div>
+
+<div class="container possibly">
+    <div class="title">
+        <span>Наши возможности</span>
+    </div>
+    <ul class="possibly__list">
+        <li>
+      <span>
+        Решим любую поставленную задачу
+      </span>
+            <span>
+        Разработаем рецептуры, упаковку, дизайн, которые позволят вам успешно конкурировать на любых рынках.
+      </span>
+        </li>
+        <li>
+      <span>
+        Сертифицируем продукцию по всему миру
+      </span>
+            <span>
+        Наш успешный опыт - более чем в 30 странах мира, в числе которых Чехия, Болгария, Турция, Испания, Германия, Мексика.
+      </span>
+        </li>
+        <li>
+            <span>Зарегистрируем для вас товарный знак</span>
+            <span>Возьмем на себя оформление и подачу необходимых документов.</span>
+            <!--      Временно скрыл ссылку-->
+            <!--      <span>Творческий подход к продающим дизайн-проектам: фирменный стиль, упаковка, веб-сайты, посадочные страницы, product book, полиграфия. <span>Смотреть портфолио</span></span>-->
+        </li>
+        <li>
+            <span>Создадим для вас бренд</span>
+            <span>От названия и brand legend до дизайна упаковки и продающих интернет ресурсов.</span>
+        </li>
+        <li class="long">
+            <span>Оптимальная схема логистики</span>
+            <span>Эффективные решения, интеграция с любыми логистическими платформами и сервисами. Обеспечим логистику по РФ, странам Таможенного и Европейского союзов, странам Южной Америки, Китаю и Турции.</span>
+        </li>
+        <li>
+            <span>Гарантируем качество</span>
+            <span>Подтверждено российскими и международными стандартами менеджмента выпуска пищевой продукции.</span>
+        </li>
+    </ul>
+</div>
+
+<app-gallery></app-gallery>
+
+
+<div class="container trust" #containerTrust>
+    <div class="title">
+        <span>Нам доверяют</span>
+    </div>
+    <div class="trust__logos">
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img1">
+                <img [lazyLoad]="'/assets/npobit/trust/new/vertera.svg' | static" alt="vertera">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img2">
+                <img [lazyLoad]="'/assets/npobit/trust/new/thalasso.svg' | static" alt="thalasso">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img3">
+                <img [lazyLoad]="'/assets/npobit/trust/new/smart-kid.svg' | static" alt="smart-kid">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img4">
+                <img [lazyLoad]="'/assets/npobit/trust/new/twist-the-planet.svg' | static" alt="twist-the-planet">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img5">
+                <img [lazyLoad]="'/assets/npobit/trust/new/happyline.svg' | static" alt="happyline">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img6">
+                <img [lazyLoad]="'/assets/npobit/trust/new/binergia.svg' | static" alt="binergia">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img7">
+                <img [lazyLoad]="'/assets/npobit/trust/new/wellme.svg' | static" alt="wellme">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img8">
+                <img [lazyLoad]="'/assets/npobit/trust/new/mkc.svg' | static" alt="mkc">
+            </picture>
+        </div>
+        <div class="trust__logos--link">
+            <picture class="trust__logos--img trust__logos--img9">
+                <img [lazyLoad]="'/assets/npobit/trust/new/freeul.svg' | static" alt="freeul">
+            </picture>
+        </div>
+    </div>
+</div>
+<div class="main-question_form" id="questions_form">
+    <app-questions-form></app-questions-form>
+</div>
+
+<!-- Scroll To Top -->
+<app-scroll-to-top
+        [ngClass]="{'hide-play-video' : hideScrollToTopButtons, 'visible': displayBtn}"
+        [scrollPositionToHideButtons]="hiddenScrollToTopNumber"
+        [duplicate]="positionScrollToTop">
+</app-scroll-to-top>
+
+

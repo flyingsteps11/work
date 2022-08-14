@@ -1,0 +1,381 @@
+@import "../../../../styles/for-coponents";
+
+.center {
+  &__sliders {
+    height: 640px;
+    padding: 0;
+    margin: 104px 0 0;
+    display: block;
+    @include media("min", "md") {
+      height: 1024px;
+      margin-top: 56px;
+    }
+    @include media("min", "lg") {
+      height: 768px;
+      margin-top: 40px;
+    }
+    @media screen and (min-width: 1280px) { // For Gsap
+      display: flex;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      height: 100vh;
+      position: relative;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-top: 72px;
+    }
+    @include media("min", "xxl") {
+      margin-top: 78px;
+    }
+
+    &--bullets {
+      margin-top: 15px;
+    }
+
+    &--info {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      @include flex(flex-start, flex-start);
+      flex-direction: column;
+      @include font(24px, 32px);
+
+      &:not(.center) {
+        @include media("min", "md") {
+          align-items: flex-start;
+          flex-direction: column;
+          max-width: 514px;
+        }
+        @include media("min", "lg") {
+          @include font(24px, 32px);
+          align-items: center;
+          flex-direction: row;
+          max-width: 944px;
+        }
+        @include media("min", "full") {
+          max-width: 1320px;
+          padding-left: 150px;
+        }
+      }
+
+      &.center {
+        align-items: center;
+        text-align: center;
+        --animate-duration: 1s;
+        --animate-delay: 1s;
+        @include media("min", "md") {
+          @include font(32px, 48px);
+        }
+        @include media("min", "lg") {
+          @include font(40px, 56px);
+          margin-top: 14px;
+        }
+        @include media("min", "full") {
+          margin-top: -40px;
+        }
+
+        &.active {
+          z-index: 3;
+          opacity: 0;
+          justify-content: center;
+          width: 56px;
+          height: 56px;
+
+          button {
+            svg-icon {
+              --icon-height: 56px;
+              --icon-width: 56px;
+            }
+          }
+        }
+      }
+
+      .open-video {
+        @include flex(center, flex-start);
+        @include font(16px, 28px);
+        color: #ffffff;
+        font-weight: 500;
+        margin-top: 24px;
+        @include media("min", "md") {
+          @include font(20px, 28px);
+          --icon-width: 40px;
+          --icon-height: 40px;
+        }
+        @include media("min", "full") {
+          margin-top: 1px;
+          margin-left: -83px;
+        }
+
+        span {
+          margin-left: 16px;
+          @include media("min", "full") {
+            margin-left: 12px;
+          }
+        }
+      }
+
+      .open-carousel {
+        @include flex(center, flex-start);
+        @include font(16px, 28px);
+        color: #ffffff;
+        font-weight: 500;
+        margin-top: 24px;
+        @include media("min", "md") {
+          @include font(20px, 28px);
+          --icon-width: 40px;
+          --icon-height: 40px;
+        }
+
+        span {
+          margin-left: 11px;
+        }
+      }
+
+      .big {
+        @include font(128px, 150px);
+        @include media("min", "md") {
+          flex-shrink: 0;
+          margin-right: 24px;
+          line-height: 1;
+          @include font(240px, 282px);
+        }
+        @include media("min", "lg") {
+          margin-right: 24px;
+          @include font(119px, 180px);
+        }
+        @include media("min", "xl") {
+          margin-right: 56px;
+          @include font(180px, 180px);
+        }
+        @include media("min", "xxl") {
+          margin-right: 64px;
+          font-size: 240px;
+          line-height: 157px;
+        }
+
+        &.large {
+          font-size: 100px;
+          line-height: 117px;
+          letter-spacing: -0.04em;
+          @include media("min", "lg") {
+            @include font(119px, 126px);
+          }
+          @include media("min", "xxl") {
+            margin-right: 56px;
+            font-size: 136px;
+            line-height: 117px;
+          }
+          @include media("min", "full") {
+            margin-right: 64px;
+            font-size: 160px;
+            line-height: 170px;
+          }
+        }
+
+        &::ng-deep { // For InnerHtml
+          & > span {
+            @include font(64px, 75px);
+
+            @include media("min", "xxl") {
+              @include font(120px, 1);
+            }
+            @include media("min", "full") {
+              @include font(100px, 117px);
+            }
+          }
+        }
+
+      }
+
+      & > span {
+        &:not(.big) {
+          @include media("min", "md") {
+            margin-bottom: 14px;
+            @include font(32px, 48px);
+          }
+          @include media("min", "lg") {
+            @include font(24px, 32px);
+            max-width: 541px;
+            margin-bottom: 0;
+          }
+          @include media("min", "xl") {
+            @include font(48px, 64px);
+            max-width: 1040px;
+          }
+          @include media("min", "xxl") {
+            @include font(40px, 56px);
+            max-width: 600px;
+            margin-bottom: 32px;
+          }
+          @include media("min", "full") {
+            max-width: 1218px;
+            @include font(56px, 80px);
+          }
+        }
+      }
+    }
+
+    &--item {
+      position: relative;
+      height: 640px;
+      width: 100%;
+      flex-shrink: 0;
+      @include flex();
+      padding: 0 14px;
+      @include media("min", "sm") {
+        padding: 0 24px;
+      }
+      @media screen and (min-width: 1280px) {
+        height: inherit;
+      }
+
+      &:nth-child(3) {
+        .center__sliders--info {
+          @include media("min", "full") {
+            padding-left: 66px;
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        .center__sliders--info {
+          @include media("min", "full") {
+            padding-left: 0;
+          }
+        }
+      }
+
+      &.video {
+        &:hover {
+          @media screen and (max-width: 1279px) {
+            cursor: pointer;
+            .center__sliders--info.center.active {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      picture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      img {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+        object-position: top left;
+      }
+    }
+  }
+}
+
+picture, .video__block {
+  width: 100%;
+  height: 100%;
+  @include flex();
+  object-fit: cover;
+}
+
+.video__block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .video__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity .25s linear;
+
+    &.iframe {
+      object-fit: fill;
+      @media screen and (max-width: 1279px) {
+        height: auto;
+        z-index: 2;
+        margin: auto;
+      }
+    }
+
+    &.image {
+      opacity: 1;
+
+      &.hide-bg-image {
+        opacity: 0;
+        transition: opacity .25s linear;
+      }
+    }
+
+    &.hide-bg-video {
+      opacity: 0;
+    }
+  }
+
+  &-play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    z-index: 2;
+  }
+}
+
+.text1, .text2, .text3 {
+  @include media("min", "xl") {
+    font-size: 32px !important;
+    line-height: 48px !important;
+  }
+  @include media("min", "full") {
+    font-size: 40px !important;
+    line-height: 56px !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.video__close {
+  position: absolute;
+  z-index: 20;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  @include media("min", "xl") {
+    top: 124px;
+  }
+
+  svg-icon {
+    @include media("max", "md") {
+      --icon-width: 24px;
+      --icon-height: 24px;
+    }
+  }
+}
+
+.iframe {
+  z-index: 19;
+
+  .ytp-chrome-top-buttons {
+    display: none !important;
+  }
+}
+
+.center__sliders {
+  @include media("min", "xl") {
+    top: 0 !important;
+  }
+}
